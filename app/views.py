@@ -9,6 +9,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.hashers import make_password, check_password
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from app.permissions import *
 # import requests
 
 # Create your views here.
@@ -59,7 +60,18 @@ class CustomUserView(viewsets.ViewSet):
         return Response(user_data)
 
 
+
+
 class ProjectView(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+    permission_classes = [CanCreateProjectPermission]
 
+    def create(self, request, *args, **kwargs):
+        request.data['projectCreator'] = request.user.id
+        serializer = ProjectSerializer(data=request.data)
+        if serializer.is_valid():   
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

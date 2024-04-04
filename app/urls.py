@@ -6,6 +6,7 @@ router = routers.DefaultRouter()
 router.register(r'register', RegisterView, basename='registration')
 router.register(r'login', LoginView, basename='login')  
 router.register(r'user-list', CustomUserView, basename='user-list')  
+router.register(r'project', ProjectView, basename='project')  
 
 urlpatterns = [
     path('', include(router.urls)),
