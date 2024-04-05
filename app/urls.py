@@ -8,5 +8,6 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('user-profile/', CustomUserProfileView.as_view(), name='user-profile'),
     path('change-password/', ChangePasswordView.as_view(), name='change-password'),
-    path('reset-password/', SendResetPasswordEmaiView.as_view(), name='reset-password'),
+    path('send-password/', SendResetPasswordEmaiView.as_view(), name='send-password'),
+    path('reset-password/<user_id>/<token>/', CustomUserResetPasswordView.as_view(), name='reset-password'),
 ]   
