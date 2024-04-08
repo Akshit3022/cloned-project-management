@@ -4,6 +4,8 @@ from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeErr
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
+from app.utils import Util
+
 class RegiterSerializer(serializers.ModelSerializer):
     confirmPass = serializers.CharField()
     class Meta:
@@ -73,7 +75,9 @@ class SendResetPasswordEmailSerializer(serializers.Serializer):
             print("password reset token", token)
             link = 'http://localhost:3000/api/reset/'+user_id+'/'+token
             print("password reset link", link)
-
+            body = 'Click following link to reset password ' + link
+            data =  {'subject':'Reset Your Password', 'body':body, 'to_email':user.email}
+            Util.send_email(data)
             return data
         else:
             raise serializers.ValidationError({'INVALID EMAIL': 'Eamil does not exists'})
@@ -91,7 +95,7 @@ class CustomUserResetPasswordSerializer(serializers.Serializer):
             password = data.get('password')
             resetPass = data.get('resetPass')
             user_id = self.context.get('user_id')
-            token = self.context.get('token')
+            token = self.context.get('token')   
             if password!= resetPass:
                 raise serializers.ValidationError({'DOES NOT MATCH': 'Password and resetpass does not match'})
             id = smart_str(urlsafe_base64_decode(user_id))
