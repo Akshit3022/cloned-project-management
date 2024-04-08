@@ -109,3 +109,8 @@ class CustomUserResetPasswordSerializer(serializers.Serializer):
             PasswordResetTokenGenerator().check_token(user, token)
             raise serializers.ValidationError({'INVALID TOKEN': 'Token is invalid'})
             
+class ProjectCRUDSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = '__all__'
+        # exclude = ('projectStartDate', )

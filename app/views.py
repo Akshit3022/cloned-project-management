@@ -11,6 +11,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from app.permissions import *
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth import logout
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -72,3 +73,55 @@ class CustomUserResetPasswordView(APIView):
         serializer = CustomUserResetPasswordSerializer(data=request.data, context={'user_id': user_id, 'token':token})
         serializer.is_valid(raise_exception=True)
         return Response({"Successful":"password reset successful..!"}, status=status.HTTP_200_OK)
+
+
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        try:
+            refresh_token = request.data.get("refresh_token")
+            token = RefreshToken(refresh_token)
+            print("Refresh token", token)
+            token.blacklist()
+            logout(request)
+            return Response({"success": "Logged out successfully."}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        
+
+class ProjectListView(APIView):
+    permission_classes = [CanCreateProjectPermission]
+
+    def get(self, request):
+        projects = Project.objects.all()
+        serializer = ProjectCRUDSerializer(projects, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        serializer = ProjectCRUDSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+
+class ProjectCRUDView(APIView):
+    permission_classes = [CanCreateProjectPermission]
+
+    def patch(self, request, id):
+        try:
+            project = Project.objects.get(pk=id)
+            serializer = ProjectCRUDSerializer(project, data=request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response({"Success": "Changes updated successfully.", "updated_data":serializer.data}, status=status.HTTP_200_OK)
+        except Project.DoesNotExist:
+            return Response({"error": "Project does not exists."},status=status.HTTP_404_NOT_FOUND)
+
+    def delete(self, request, id):
+        try:
+            project = Project.objects.get(pk=id)    
+            project.delete()
+            return Response({"success": "Project deleted successfully."},status=status.HTTP_204_NO_CONTENT)
+        except Project.DoesNotExist:
+            return Response({"error": "Project does not exists."},status=status.HTTP_404_NOT_FOUND)
