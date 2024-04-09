@@ -40,7 +40,7 @@ class LoginSerializer(serializers.ModelSerializer):
 class CustomUserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'email', 'name')
+        fields = ('id', 'email', 'name', 'userType', 'is_active')
 
 
 class ChangePasswordSerializer(serializers.Serializer):
@@ -110,12 +110,12 @@ class CustomUserResetPasswordSerializer(serializers.Serializer):
             raise serializers.ValidationError({'INVALID TOKEN': 'Token is invalid'})
         
 
-
 class ProjectListSerializer(serializers.ModelSerializer):
+    projectCreator = CustomUserProfileSerializer()
     class Meta:
         model = Project
-        # fields = '__all__'
-        exclude = ('projectCreator', )
+        fields = '__all__'
+        # exclude = ('projectCreator', )
 
     def create(self, validated_data):
         user = self.context.get('user')
@@ -127,4 +127,4 @@ class ProjectListSerializer(serializers.ModelSerializer):
 class ProjectCRUDSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = '__all__'
+        fields = '__all__'  

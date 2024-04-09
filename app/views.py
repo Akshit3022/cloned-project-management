@@ -12,6 +12,10 @@ from app.permissions import *
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import logout
+from rest_framework.generics import ListAPIView
+from django_filters.rest_framework import DjangoFilterBackend
+from django_filters import rest_framework as filters
+
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -90,25 +94,47 @@ class LogoutView(APIView):
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
 
-class ProjectListView(APIView):
-    permission_classes = [CanCreateProjectPermission]
+# class ProjectListView(APIView):
+#     # permission_classes = [CanCreateProjectPermission]
 
-    def get_permissions(self):
-        if self.request.method == 'GET':
-            return [IsAuthenticated()]
-        return super().get_permissions()
+#     # def get_permissions(self):
+#     #     if self.request.method == 'GET':
+#     #         return [IsAuthenticated()]
+#     #     return super().get_permissions()
     
-    def get(self, request):
-        projects = Project.objects.all()
-        serializer = ProjectListSerializer(projects, many=True)
-        return Response(serializer.data)
+#     def get(self, request):
+#         projects = Project.objects.all()
+#         serializer = ProjectListSerializer(projects, many=True)
+#         return Response(serializer.data)
     
+#     def post(self, request):
+#         serializer = ProjectListSerializer(data=request.data, context={'user': request.user})
+#         print("user", request.user)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class ProjectFilter(filters.FilterSet):
+    project_name = filters.CharFilter(field_name='projectName', lookup_expr='icontains')
+    employee_name = filters.CharFilter(field_name='projectCreator__name', lookup_expr='icontains')
+
+    class Meta:
+        model = Project
+        fields = ['project_name', 'employee_name']      
+
+        
+class ProjectListView(ListAPIView):
+    serializer_class = ProjectListSerializer
+    queryset = Project.objects.all()
+    filter_backends = [filters.DjangoFilterBackend] 
+    filterset_class = ProjectFilter
+
     def post(self, request):
         serializer = ProjectListSerializer(data=request.data, context={'user': request.user})
-        print("user", request.user)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)        
+
         
 
 class ProjectCRUDView(APIView):
