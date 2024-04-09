@@ -47,7 +47,7 @@ class ChangePasswordSerializer(serializers.Serializer):
     password = serializers.CharField(max_length=255, style={'input_type': 'password'}, write_only=True)
     changePass = serializers.CharField(max_length=255, style={'input_type': 'password'}, write_only=True)
 
-    class meta:
+    class Meta:
         fields = ('password', 'changePass')
 
     def validate(self, data):
@@ -87,7 +87,7 @@ class CustomUserResetPasswordSerializer(serializers.Serializer):
     password = serializers.CharField(max_length=255, style={'input_type': 'password'}, write_only=True)
     resetPass = serializers.CharField(max_length=255, style={'input_type': 'password'}, write_only=True)
 
-    class meta:
+    class Meta:
         fields = ('password', 'resetPass')
 
     def validate(self, data):
@@ -108,9 +108,23 @@ class CustomUserResetPasswordSerializer(serializers.Serializer):
         except DjangoUnicodeDecodeError as identifier:
             PasswordResetTokenGenerator().check_token(user, token)
             raise serializers.ValidationError({'INVALID TOKEN': 'Token is invalid'})
-            
+        
+
+
+class ProjectListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        # fields = '__all__'
+        exclude = ('projectCreator', )
+
+    def create(self, validated_data):
+        user = self.context.get('user')
+        print("User created", user)
+        validated_data['projectCreator'] = user
+        return super().create(validated_data)
+
+
 class ProjectCRUDSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = '__all__'
-        # exclude = ('projectStartDate', )

@@ -175,4 +175,4 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 EMAIL_USE_TLS = True
 
-print("USER",EMAIL_HOST_USER)
+# print("USER",EMAIL_HOST_USER)

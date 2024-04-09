@@ -36,5 +36,5 @@ class UserModelAdmin(BaseUserAdmin):
 admin.site.register(CustomUser, UserModelAdmin)
 
 class ProjectModelAdmin(admin.ModelAdmin):
-    list_display = ["project_id","projectCreator", "projectName", "projectStartDate"]
+    list_display = ["project_id","projectCreator", "projectName", "projectDescription", "projectStartDate"]
 admin.site.register(Project, ProjectModelAdmin)

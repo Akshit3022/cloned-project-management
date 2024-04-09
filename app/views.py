@@ -93,17 +93,23 @@ class LogoutView(APIView):
 class ProjectListView(APIView):
     permission_classes = [CanCreateProjectPermission]
 
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [IsAuthenticated()]
+        return super().get_permissions()
+    
     def get(self, request):
         projects = Project.objects.all()
-        serializer = ProjectCRUDSerializer(projects, many=True)
+        serializer = ProjectListSerializer(projects, many=True)
         return Response(serializer.data)
     
     def post(self, request):
-        serializer = ProjectCRUDSerializer(data=request.data)
+        serializer = ProjectListSerializer(data=request.data, context={'user': request.user})
+        print("user", request.user)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
+        
 
 class ProjectCRUDView(APIView):
     permission_classes = [CanCreateProjectPermission]
