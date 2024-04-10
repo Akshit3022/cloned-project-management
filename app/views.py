@@ -15,6 +15,8 @@ from django.contrib.auth import logout
 from rest_framework.generics import ListAPIView
 from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as filters
+from rest_framework.permissions import IsAdminUser
+from rest_framework.exceptions import PermissionDenied
 
 
 def get_tokens_for_user(user):
@@ -81,7 +83,7 @@ class CustomUserResetPasswordView(APIView):
 
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
-
+    
     def post(self, request):
         try:
             refresh_token = request.data.get("refresh_token")
@@ -122,20 +124,31 @@ class ProjectFilter(filters.FilterSet):
         model = Project
         fields = ['project_name', 'employee_name']      
 
-        
+
 class ProjectListView(ListAPIView):
     serializer_class = ProjectListSerializer
     queryset = Project.objects.all()
     filter_backends = [filters.DjangoFilterBackend] 
     filterset_class = ProjectFilter
+    permission_classes = [IsAdminUser]
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_admin:
+            return self.queryset  
+        else:
+            raise PermissionDenied("You do not have permission to view projects.")
+
+
+class projectCreateView(APIView):
+    permission_classes = [CanCreateProjectPermission]
 
     def post(self, request):
-        serializer = ProjectListSerializer(data=request.data, context={'user': request.user})
-        serializer.is_valid(raise_exception=True)
+        serializer = ProjectCreateSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)   
         serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)        
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        
 
 class ProjectCRUDView(APIView):
     permission_classes = [CanCreateProjectPermission]
@@ -157,3 +170,13 @@ class ProjectCRUDView(APIView):
             return Response({"success": "Project deleted successfully."},status=status.HTTP_204_NO_CONTENT)
         except Project.DoesNotExist:
             return Response({"error": "Project does not exists."},status=status.HTTP_404_NOT_FOUND)
+        
+
+class ProjectAllocationView(APIView):
+    permission_classes = [CanAllocateProject]
+
+    def post(self, request):
+        serializer = ProjectAllocationSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"Success": "Project allocation successful.", "allocation":serializer.data}, status=status.HTTP_200_OK)

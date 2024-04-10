@@ -11,6 +11,8 @@ urlpatterns = [
     path('send-password/', SendResetPasswordEmaiView.as_view(), name='send-password'),
     path('reset-password/<user_id>/<token>/', CustomUserResetPasswordView.as_view(), name='reset-password'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('project-create/', projectCreateView.as_view(), name='project-create'),
     path('project/', ProjectListView.as_view(), name='project-list'),
     path('project/<int:id>/', ProjectCRUDView.as_view(), name='project-update-delete'),
+    path('project-allocation/', ProjectAllocationView.as_view(), name='project-allocation'),
 ]   

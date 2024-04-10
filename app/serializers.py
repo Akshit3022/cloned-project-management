@@ -111,20 +111,24 @@ class CustomUserResetPasswordSerializer(serializers.Serializer):
         
 
 class ProjectListSerializer(serializers.ModelSerializer):
-    projectCreator = CustomUserProfileSerializer()
     class Meta:
         model = Project
         fields = '__all__'
-        # exclude = ('projectCreator', )
 
-    def create(self, validated_data):
-        user = self.context.get('user')
-        print("User created", user)
-        validated_data['projectCreator'] = user
-        return super().create(validated_data)
+
+class ProjectCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = '__all__'
 
 
 class ProjectCRUDSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = '__all__'  
+
+
+class ProjectAllocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectAllocation
+        fields = '__all__'

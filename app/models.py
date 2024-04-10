@@ -62,7 +62,13 @@ class CustomUser(AbstractBaseUser):
         unique=True,
     )
     name = models.CharField(max_length=50)
-    userType = models.CharField(max_length=100, choices=(('Admin', 'Admin'),('Project-Manager', 'Project-Manager'),('Team-Leader', 'Team-Leader'),('Employee', 'Employee'))) 
+    typeChoices = [
+        ('Admin', 'Admin'),
+        ('Project_Manager', 'Project_Manager'),
+        ('Team_Leader', 'Team_Leader'),
+        ('Employee', 'Employee'),
+    ]
+    userType = models.CharField(max_length=100, choices=typeChoices) 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)   
 
@@ -92,10 +98,22 @@ class CustomUser(AbstractBaseUser):
     
 
 class Project(models.Model):
-    projectCreator = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    projectCreator = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, related_name='created_by')
+    assignToPM = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, related_name='assign_to_pm')
+    assignToEMP = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, related_name='assign_to_emp')
     project_id = models.AutoField(primary_key=True)
     projectName = models.CharField(max_length=50)
     projectDescription = models.CharField(max_length=500)
     projectStartDate = models.DateField(default=now().date)
     projectEndDate = models.DateField(null=True)
-    toDo = models.CharField(max_length=100, choices=(('In progress', 'In progress'),('Completed', 'Completed'))) 
+    todoChoices = [
+        ('In progress', 'In progress'),
+        ('Completed', 'Completed'),
+    ]
+    projectStatus = models.CharField(max_length=100, choices=todoChoices) 
+
+
+class ProjectAllocation(models.Model):
+    emp_allocation = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    allocation_percentage = models.DecimalField(max_digits=5, decimal_places=2)
