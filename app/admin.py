@@ -8,7 +8,7 @@ class UserModelAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ["id", "email", "name", "userType", "is_active", "is_admin"]
+    list_display = ["id", "email", "name", "userType", "is_active", "is_admin", "allocation_percentage"]
     list_filter = ["is_admin"]
     fieldsets = [
         ('User Credential', {"fields": ["email", "password"]}),
@@ -38,3 +38,7 @@ admin.site.register(CustomUser, UserModelAdmin)
 class ProjectModelAdmin(admin.ModelAdmin):
     list_display = ["project_id","projectCreator", "projectName", "projectDescription", "projectStartDate"]
 admin.site.register(Project, ProjectModelAdmin)
+
+class ProjectAllocationModelAdmin(admin.ModelAdmin):
+    list_display = ["emp_allocation","project"]
+admin.site.register(ProjectAllocation, ProjectAllocationModelAdmin)

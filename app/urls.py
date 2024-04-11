@@ -15,4 +15,5 @@ urlpatterns = [
     path('project/', ProjectListView.as_view(), name='project-list'),
     path('project/<int:id>/', ProjectCRUDView.as_view(), name='project-update-delete'),
     path('project-allocation/', ProjectAllocationView.as_view(), name='project-allocation'),
+    path('employee-allocation-list/', EmployeeAllocationListView.as_view(), name='employee-allocation-list'),
 ]   

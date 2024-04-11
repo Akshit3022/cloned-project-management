@@ -1,5 +1,4 @@
 from django.shortcuts import render
-# from rest_framework import viewsets
 from rest_framework.views import APIView
 from app.models import *
 from app.serializers import *
@@ -7,7 +6,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
-# from django.http import JsonResponse
 from app.permissions import *
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
@@ -96,26 +94,6 @@ class LogoutView(APIView):
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
 
-# class ProjectListView(APIView):
-#     # permission_classes = [CanCreateProjectPermission]
-
-#     # def get_permissions(self):
-#     #     if self.request.method == 'GET':
-#     #         return [IsAuthenticated()]
-#     #     return super().get_permissions()
-    
-#     def get(self, request):
-#         projects = Project.objects.all()
-#         serializer = ProjectListSerializer(projects, many=True)
-#         return Response(serializer.data)
-    
-#     def post(self, request):
-#         serializer = ProjectListSerializer(data=request.data, context={'user': request.user})
-#         print("user", request.user)
-#         serializer.is_valid(raise_exception=True)
-#         serializer.save()
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
 class ProjectFilter(filters.FilterSet):
     project_name = filters.CharFilter(field_name='projectName', lookup_expr='icontains')
     employee_name = filters.CharFilter(field_name='projectCreator__name', lookup_expr='icontains')
@@ -179,4 +157,15 @@ class ProjectAllocationView(APIView):
         serializer = ProjectAllocationSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response({"Success": "Project allocation successful.", "allocation":serializer.data}, status=status.HTTP_200_OK)
+        return Response({"Success": "Project allocation successful.", "allocation": serializer.data},
+                        status=status.HTTP_201_CREATED)        
+        
+        
+class EmployeeAllocationListView(APIView):
+    permission_classes = [CanAllocateProject]
+
+    def get(self, request):
+        employees = CustomUser.objects.filter(userType="Employee")
+        serializer = EmployeeAllocationListSerializer(employees, many=True)
+        return Response(serializer.data)
+
