@@ -9,39 +9,25 @@
 		{
 			"name": "Registration",
 			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "login",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "User_list",
-			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyMzA5ODQ0LCJpYXQiOjE3MTIzMDkyNDQsImp0aSI6IjEyZjY1YWJmNmQ4YjQyMWI4MjY0YTdkZjcxNTA2Y2Y4IiwidXNlcl9pZCI6NH0.E0Gpjm2LUf4WJpOT86LNBzfOdo24M81UtmECOSnEKYU",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"akshit.chauhan@yudiz.com\",\n    \"name\": \"Akshit\",\n    \"password\": \"3333\",\n    \"confirmPass\": \"3333\",\n    \"userType\": \"Employee\",\n    \"is_active\": \"True\"     \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/user-list/",
+					"raw": "http://127.0.0.1:8000/api/register/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -52,7 +38,7 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"user-list",
+						"register",
 						""
 					]
 				}
@@ -60,10 +46,41 @@
 			"response": []
 		},
 		{
-			"name": "project",
+			"name": "login",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"akshit.chauhan@yudiz.com\",\n    \"password\": \"7777\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				}
 			},
 			"response": []
 		},
@@ -71,7 +88,18 @@
 			"name": "user-profile",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNTgyMzI4LCJpYXQiOjE3MTI1ODE3MjgsImp0aSI6IjY4OWQ3ZjdjOGUyMTQxNTBhYWUzMTMwMjE2YmVlNzQ3IiwidXNlcl9pZCI6OH0.L2XW0WMWW5kN4dSplbf0uAFnP5AvpYZaSEkG6kgwg30",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/user-profile/",
 					"protocol": "http",
@@ -86,6 +114,13 @@
 						"api",
 						"user-profile",
 						""
+					],
+					"query": [
+						{
+							"key": "cc",
+							"value": null,
+							"disabled": true
+						}
 					]
 				}
 			},
@@ -103,13 +138,13 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyMzEzMjY2LCJpYXQiOjE3MTIzMTI2NjYsImp0aSI6IjU2ZTc2NTJmMWQ3NzRiMjA4ZGI3OGExOWY4ZmJkM2EwIiwidXNlcl9pZCI6NH0.QOQjROEfTWfwvPqbZIOcA51lzgzu0z_hM7n5mQ5Bl6o",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjQ0NjYwLCJpYXQiOjE3MTI2NDQwNjAsImp0aSI6IjQwZDljMzVkZGUwZTQ4NGFhYWYxZjgyODU5Zjg5ZjAyIiwidXNlcl9pZCI6MTN9.qiJbzgQ5jjhKI1NoZVMvRIU-YgXw2ZyL-H795dLTKZ8",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"password\": 2222,\n    \"changePass\":2222\n}",
+					"raw": "{\n    \"password\": 3333,\n    \"changePass\":3333\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -138,13 +173,192 @@
 		{
 			"name": "send-password",
 			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"akshit.chauhan@yudiz.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/send-password/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"send-password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset-password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\": \"7777\",\n    \"resetPass\": \"7777\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reset-password/MTQ/c57e74-474350eda97a864da0f2fd80b0ab26d6/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reset-password",
+						"MTQ",
+						"c57e74-474350eda97a864da0f2fd80b0ab26d6",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNTY4NzkyLCJpYXQiOjE3MTI1NjgxOTIsImp0aSI6IjY4OTVlNDlkYzZjYTQ1OWI4MDg2ZWU5MmNkZWY3MjA2IiwidXNlcl9pZCI6NX0.wyL4YSYYtuK6GS_Rq2b_TBmIVvK8D5-Ml1zzrzsqSWs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/logout/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Project-list",
+			"request": {
 				"method": "GET",
 				"header": []
 			},
 			"response": []
 		},
 		{
-			"name": "reset-password",
+			"name": "project-update-delete",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjQ1NjU2LCJpYXQiOjE3MTI2NDUwNTYsImp0aSI6Ijk2NmViM2E3MTZmMjRiMDU4MGZlZjQzMGMwZDA0NjZkIiwidXNlcl9pZCI6MTB9.IUEA7kajgvDS3TN0zMa7Kij-16Xkw_Wf4BpM24_d2as",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"projectName\": \"empManager\",\n        \"projectDescription\": \"managing employee salary\",\n        \"projectStartDate\": \"2024-04-09\",\n        \"projectEndDate\": \"2024-04-23\",\n        \"toDo\": \"In progress\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/project/16/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"project",
+						"16",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "project-create",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "project-allocation",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "employee-allocation-list",
 			"request": {
 				"method": "GET",
 				"header": []

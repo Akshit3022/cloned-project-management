@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_cron',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +44,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',     
     'django_filters',
-
 ]
 
 MIDDLEWARE = [
@@ -140,8 +140,14 @@ REST_FRAMEWORK = {
     # 'DEFAULT_RENDERER_CLASSES': (
     #     'rest_framework.renderers.JSONRenderer',
     # )
-    
 }
+
+# CRONJOBS = [
+#     ('*/1 * * * *', 'app.views.my_scheduled_job')
+# ]
+CRON_CLASSES = [
+    'app.views.MyCronJob',
+]
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),

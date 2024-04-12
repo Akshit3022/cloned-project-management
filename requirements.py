@@ -2,13 +2,14 @@ asgiref==3.8.1
 certifi==2024.2.2
 charset-normalizer==3.3.2
 Django==5.0.3
-django-crontab==0.7.1
+django-cron==0.6.0
 django-dotenv==1.4.2
 django-filter==24.2
 djangorestframework==3.15.1
 djangorestframework-simplejwt==5.3.1
 idna==3.6
 PyJWT==2.8.0
+python-dotenv==1.0.1
 requests==2.31.0
 sqlparse==0.4.4
 urllib3==2.2.1

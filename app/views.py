@@ -15,6 +15,19 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as filters
 from rest_framework.permissions import IsAdminUser
 from rest_framework.exceptions import PermissionDenied
+from django_cron import CronJobBase, Schedule
+
+
+class MyCronJob(CronJobBase):
+    RUN_EVERY_MINS = 1
+
+    schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
+    code = 'myapp.my_cron_job'  
+
+    def do(self):
+        view = EmployeeAllocationListView()
+        view.get(None)  
+
 
 
 def get_tokens_for_user(user):
@@ -161,11 +174,13 @@ class ProjectAllocationView(APIView):
                         status=status.HTTP_201_CREATED)        
         
         
+        
 class EmployeeAllocationListView(APIView):
     permission_classes = [CanAllocateProject]
 
     def get(self, request):
         employees = CustomUser.objects.filter(userType="Employee")
         serializer = EmployeeAllocationListSerializer(employees, many=True)
+        print(serializer.data)
         return Response(serializer.data)
 
