@@ -90,7 +90,7 @@ class Project(models.Model):
     project_id = models.AutoField(primary_key=True)
     projectName = models.CharField(max_length=50)
     projectDescription = models.CharField(max_length=500)
-    projectStartDate = models.DateField(default=now().date)
+    projectStartDate = models.DateField(default=now)
     projectEndDate = models.DateField(null=True)
     todoChoices = [
         ('In progress', 'In progress'),
@@ -103,3 +103,8 @@ class ProjectAllocation(models.Model):
     emp_allocation = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)  
     allocation_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, default=0)
+    taskName = models.CharField(max_length=100, null=True)
+    taskDescription = models.CharField(max_length=500, null=True)
+    taskStartDate = models.DateField(default=now, null=True)
+    taskEndDate = models.DateField(null=True)
+    taskStatus = models.BooleanField(default=False, null=True)

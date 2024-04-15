@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django_cron',
+    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,7 +70,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        },
+        },  
     },
 ]
 
@@ -142,12 +142,9 @@ REST_FRAMEWORK = {
     # )
 }
 
-# CRONJOBS = [
-#     ('*/1 * * * *', 'app.views.my_scheduled_job')
+# CRON_CLASSES = [
+#     'app.views.MyCronJob',
 # ]
-CRON_CLASSES = [
-    'app.views.MyCronJob',
-]
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
@@ -188,3 +185,34 @@ EMAIL_USE_TLS = True
 
 # print("USER",EMAIL_HOST_USER)
 
+# logging
+
+# settings.py
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'app/logs/cronjob.log',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
+# CRONJOBS = [
+#     ('*/1 * * * *', 'python3 /app/cron.py >> app/logs/cronjob.log 2>&1')
+# ]
+
+
+CRONJOBS = [
+    ('*/1 * * * *', 'app.views.print_hello')
+]

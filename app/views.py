@@ -18,16 +18,34 @@ from rest_framework.exceptions import PermissionDenied
 from django_cron import CronJobBase, Schedule
 
 
-class MyCronJob(CronJobBase):
-    RUN_EVERY_MINS = 1
+import logging
 
-    schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
-    code = 'myapp.my_cron_job'  
+# Initialize logger
+logger = logging.getLogger(__name__)
 
-    def do(self):
-        view = EmployeeAllocationListView()
-        view.get(None)  
+def print_hello():
+    logger.info("Testing logging functionality")
+    try:
+        print("Hello World")
+        logger.info("Hello World")
+    except Exception as e:
+        logger.error("An error occurred: %s", str(e), exc_info=True)
 
+
+
+# class MyCronJob(CronJobBase):
+#     RUN_EVERY_MINS = 1
+#     RETRY_AFTER_FAILURE_MINS = 1
+#     logging.info("outside do")
+
+#     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
+#     code = 'app.MyCronJob'
+  
+#     def do(self):
+#         logging.info("inside do")
+#         view = EmployeeAllocationListView()
+#         logging.info("inside do 2")
+#         view.get(None)
 
 
 def get_tokens_for_user(user):
@@ -173,8 +191,7 @@ class ProjectAllocationView(APIView):
         return Response({"Success": "Project allocation successful.", "allocation": serializer.data},
                         status=status.HTTP_201_CREATED)        
         
-        
-        
+                
 class EmployeeAllocationListView(APIView):
     permission_classes = [CanAllocateProject]
 
@@ -184,3 +201,21 @@ class EmployeeAllocationListView(APIView):
         print(serializer.data)
         return Response(serializer.data)
 
+class TaskStatusView(APIView):
+    permission_classes = [CanChangeTaskStatus]
+
+    def patch(self, request, id):
+        project_allocaction = ProjectAllocation.objects.get(pk=id)
+        user_name = request.user.name
+        serializer = TaskStatusSerializer(project_allocaction, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        if project_allocaction.taskStatus == True:
+            response_data = {
+                "Success": f"Task has been completed successfully by {user_name}.",
+                "updated_data": serializer.data
+            }
+            return Response(response_data, status=status.HTTP_200_OK)
+            # return Response({"Success": "Task has been completed successfully by {{user_name}}.", "updated_data":serializer.data}, status=status.HTTP_200_OK)
+        else:
+            return Response({"Success": "Task has not completed.", "updated_data":serializer.data}, status=status.HTTP_200_OK)

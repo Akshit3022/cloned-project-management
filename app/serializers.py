@@ -161,7 +161,7 @@ class ProjectAllocationSerializer(serializers.ModelSerializer):
         return ProjectAllocation.objects.create(**validated_data)
 
 
-class ProjectAllocationSerializer(serializers.ModelSerializer):
+class ProjectInfoSerializer(serializers.ModelSerializer):
     project_name = serializers.SerializerMethodField()
     class Meta:
         model = ProjectAllocation
@@ -171,7 +171,7 @@ class ProjectAllocationSerializer(serializers.ModelSerializer):
         return obj.project.projectName
 
 class EmployeeAllocationListSerializer(serializers.ModelSerializer):
-    projects = ProjectAllocationSerializer(source='projectallocation_set', many=True, read_only=True)
+    projects = ProjectInfoSerializer(source='projectallocation_set', many=True, read_only=True)
     total_allocation_percentage = serializers.SerializerMethodField()
 
     class Meta:
@@ -181,3 +181,15 @@ class EmployeeAllocationListSerializer(serializers.ModelSerializer):
     def get_total_allocation_percentage(self, obj):
         total_allocation = sum([allocation.allocation_percentage for allocation in obj.projectallocation_set.all()])
         return total_allocation
+    
+
+class TaskStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectAllocation
+        fields = '__all__'
+
+    # def validate(self, data):
+    #     task_status = data.get('task_status')
+    #     if task_status == True:
+    #         raise ValidationError
+    #     return data

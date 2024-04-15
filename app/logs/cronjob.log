@@ -1,0 +1,966 @@
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden: /api/project/
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /api/project/
+Forbidden: /api/project/
+Forbidden: /api/project/
+Method Not Allowed: /api/project-allocation/
+Unauthorized: /api/employee-allocation-list/
+Unauthorized: /api/employee-allocation-list/
+Internal Server Error: /api/employee-allocation-list/
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/fields/related_descriptors.py", line 236, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/fields/mixins.py", line 15, in get_cached_value
+    return instance._state.fields_cache[cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'project'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: app_project.taskName
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py", line 201, in get
+    print(serializer.data)
+          ^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/fields.py", line 1872, in to_representation
+    return method(value)
+           ^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py", line 171, in get_project_name
+    return obj.project.projectName
+           ^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/fields/related_descriptors.py", line 254, in __get__
+    rel_obj = self.get_object(instance)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/fields/related_descriptors.py", line 217, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 645, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: app_project.taskName
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /
+Not Found: /favicon.ico
+Internal Server Error: /admin/app/projectallocation/
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: app_projectallocation.taskName
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/contrib/admin/options.py", line 716, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 240, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/contrib/admin/options.py", line 2124, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+                                                           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: app_projectallocation.taskName
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /api/project-allocation/
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: app_projectallocation.emp_allocation_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py", line 190, in post
+    serializer.save()
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: app_projectallocation.emp_allocation_id
+Internal Server Error: /api/project-allocation/
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: app_projectallocation.emp_allocation_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py", line 190, in post
+    serializer.save()
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: app_projectallocation.emp_allocation_id
+Internal Server Error: /api/project-allocation/
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: app_projectallocation.emp_allocation_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py", line 190, in post
+    serializer.save()
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: app_projectallocation.emp_allocation_id
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/project-allocation/
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: app_projectallocation.emp_allocation_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py", line 190, in post
+    serializer.save()
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: app_projectallocation.emp_allocation_id
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/models.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/project-allocation/
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: app_projectallocation.emp_allocation_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py", line 190, in post
+    serializer.save()
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/rest_framework/serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yudiz/Documents/training/Django/REST/projectManagement/my_env/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: app_projectallocation.emp_allocation_id
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/serializers.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+Method Not Allowed: /api/task-status/1/
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+Method Not Allowed: /api/task-status/1/
+Method Not Allowed: /api/task-status/1/
+Method Not Allowed: /api/task-status/1/
+Method Not Allowed: /api/task-status/3/
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /api/task-status/3/
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yudiz/Documents/training/Django/REST/projectManagement/projectManagement/app/views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/task-status/3/
