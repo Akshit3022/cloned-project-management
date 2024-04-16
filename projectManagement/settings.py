@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',     
     'django_filters',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -135,16 +135,11 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
-    # 'DEFAULT_RENDERER_CLASSES': (
-    #     'rest_framework.renderers.JSONRenderer',
-    # )
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
+    # 'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
-# CRON_CLASSES = [
-#     'app.views.MyCronJob',
-# ]
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
@@ -185,34 +180,45 @@ EMAIL_USE_TLS = True
 
 # print("USER",EMAIL_HOST_USER)
 
-# logging
-
 # settings.py
 
+CRONJOBS = [
+    ('*/1 * * * *', 'app.cron.job')
+]   
+
+
+import os
+
+# Define the directory where logs will be stored
+LOG_DIR = os.path.join(BASE_DIR, 'app/logs')
+if not os.path.exists(LOG_DIR):
+    os.makedirs(LOG_DIR)
+
+LOG_FILE = os.path.join(LOG_DIR, 'django_cron.log')
+
+# Logging configuration
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+        'formatters': {
+            'verbose': {
+                'format': '%(levelname)s %(asctime)s %(module)s %(message)s',
+                'datefmt': '%Y-%m-%d %H:%M:%S',
+            },
+        },
     'handlers': {
         'file': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'app/logs/cronjob.log',
+            'filename': LOG_FILE,
+            'formatter': 'verbose',
         },
     },
     'loggers': {
-        '': {
+        'django_cron': {
             'handlers': ['file'],
-            'level': 'INFO',
+            'level': 'DEBUG',
             'propagate': True,
         },
     },
 }
-
-# CRONJOBS = [
-#     ('*/1 * * * *', 'python3 /app/cron.py >> app/logs/cronjob.log 2>&1')
-# ]
-
-
-CRONJOBS = [
-    ('*/1 * * * *', 'app.views.print_hello')
-]

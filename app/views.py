@@ -11,41 +11,10 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import logout
 from rest_framework.generics import ListAPIView
-from django_filters.rest_framework import DjangoFilterBackend
-from django_filters import rest_framework as filters
 from rest_framework.permissions import IsAdminUser
 from rest_framework.exceptions import PermissionDenied
-from django_cron import CronJobBase, Schedule
-
-
-import logging
-
-# Initialize logger
-logger = logging.getLogger(__name__)
-
-def print_hello():
-    logger.info("Testing logging functionality")
-    try:
-        print("Hello World")
-        logger.info("Hello World")
-    except Exception as e:
-        logger.error("An error occurred: %s", str(e), exc_info=True)
-
-
-
-# class MyCronJob(CronJobBase):
-#     RUN_EVERY_MINS = 1
-#     RETRY_AFTER_FAILURE_MINS = 1
-#     logging.info("outside do")
-
-#     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
-#     code = 'app.MyCronJob'
-  
-#     def do(self):
-#         logging.info("inside do")
-#         view = EmployeeAllocationListView()
-#         logging.info("inside do 2")
-#         view.get(None)
+from app.filters import *
+from rest_framework.pagination import PageNumberPagination
 
 
 def get_tokens_for_user(user):
@@ -111,7 +80,7 @@ class CustomUserResetPasswordView(APIView):
 
 
 class LogoutView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]  
     
     def post(self, request):
         try:
@@ -124,14 +93,6 @@ class LogoutView(APIView):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
-
-class ProjectFilter(filters.FilterSet):
-    project_name = filters.CharFilter(field_name='projectName', lookup_expr='icontains')
-    employee_name = filters.CharFilter(field_name='projectCreator__name', lookup_expr='icontains')
-
-    class Meta:
-        model = Project
-        fields = ['project_name', 'employee_name']      
 
 
 class ProjectListView(ListAPIView):
@@ -153,6 +114,7 @@ class projectCreateView(APIView):
     permission_classes = [CanCreateProjectPermission]
 
     def post(self, request):
+        request.data['projectCreator'] = request.user.id
         serializer = ProjectCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)   
         serializer.save()
@@ -219,3 +181,24 @@ class TaskStatusView(APIView):
             # return Response({"Success": "Task has been completed successfully by {{user_name}}.", "updated_data":serializer.data}, status=status.HTTP_200_OK)
         else:
             return Response({"Success": "Task has not completed.", "updated_data":serializer.data}, status=status.HTTP_200_OK)
+        
+
+class ManageLeaveView(APIView):
+    permission_classes = [CanCraeteLeaveRequest]
+
+    def post(self, request):
+        request.data['empName'] = request.user.id
+        serializer = ManageRequestSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+
+class LeaveListView(ListAPIView):
+    serializer_class = ListRequestSerializer
+    queryset = ManageLeave.objects.all()
+    filter_backends = [filters.DjangoFilterBackend] 
+    filterset_class = LeaveFilter
+    pagination_class = PageNumberPagination
+    # permission_classes = [CanViewLeaveRequestPermission]  
+

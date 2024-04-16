@@ -17,4 +17,6 @@ urlpatterns = [
     path('project-allocation/', ProjectAllocationView.as_view(), name='project-allocation'),
     path('employee-allocation-list/', EmployeeAllocationListView.as_view(), name='employee-allocation-list'),
     path('task-status/<int:id>/', TaskStatusView.as_view(), name='task-status'),
+    path('request-leave/', ManageLeaveView.as_view(), name='request-leave'),
+    path('leave-list/', LeaveListView.as_view(), name='leave-list'),
 ]   

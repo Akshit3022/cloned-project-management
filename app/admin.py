@@ -42,3 +42,7 @@ admin.site.register(Project, ProjectModelAdmin)
 class ProjectAllocationModelAdmin(admin.ModelAdmin):
     list_display = ["emp_allocation","project"]
 admin.site.register(ProjectAllocation, ProjectAllocationModelAdmin)
+
+class ManageLeaveModelAdmin(admin.ModelAdmin):
+    list_display = ["empName","leaveType","leaveReason", "notifyTo"]
+admin.site.register(ManageLeave, ManageLeaveModelAdmin)

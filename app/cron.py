@@ -1,16 +1,9 @@
-import logging
-logger = logging.getLogger(__name__)
-
 
 import logging
 
-# Initialize logger
-logger = logging.getLogger(__name__)
-
-def print_hello():
+def job():
     try:
-        print("Hello World")
-        logger.info("Hello World")
+        # Your cron job logic here
+        logging.info('Cron job executed successfully')
     except Exception as e:
-        # Log the exception
-        logger.exception("An error occurred: %s", str(e))
+        logging.error(f'An error occurred in cron job: {e}')

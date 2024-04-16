@@ -105,6 +105,19 @@ class ProjectAllocation(models.Model):
     allocation_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, default=0)
     taskName = models.CharField(max_length=100, null=True)
     taskDescription = models.CharField(max_length=500, null=True)
-    taskStartDate = models.DateField(default=now, null=True)
+    taskStartDate = models.DateField(null=True)
     taskEndDate = models.DateField(null=True)
     taskStatus = models.BooleanField(default=False, null=True)
+
+class ManageLeave(models.Model):
+    empName = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, related_name='leaves_requested')
+    leaveStartDate = models.DateField()
+    leaveEndDate = models.DateField()
+    typeOfLeave = [
+        ('half-day', 'half-day'),
+        ('full-day', 'full-day'),
+    ]
+    leaveType = models.CharField(max_length=100, choices=typeOfLeave ,default='full-day') 
+    leaveReason = models.CharField(max_length=500)
+    notifyTo = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='leaves_notified')
+

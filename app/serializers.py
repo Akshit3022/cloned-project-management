@@ -187,9 +187,18 @@ class TaskStatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectAllocation
         fields = '__all__'
+        
+class ManageRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ManageLeave
+        fields = '__all__'
+        
 
-    # def validate(self, data):
-    #     task_status = data.get('task_status')
-    #     if task_status == True:
-    #         raise ValidationError
-    #     return data
+class ListRequestSerializer(serializers.ModelSerializer):
+    empName = serializers.SerializerMethodField()
+    class Meta:
+        model = ManageLeave
+        fields = '__all__'
+        
+    def get_empName(self, obj):
+        return obj.empName.name 
