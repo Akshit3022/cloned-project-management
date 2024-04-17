@@ -193,6 +193,22 @@ class ManageLeaveView(APIView):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
         
+class ApproveLeaveView(APIView):
+    permission_classes = [CanViewLeaveRequestPermission]
+
+    def patch(self,request, id):
+        leave = ManageLeave.objects.get(pk=id)
+        serializer = ApproveLeavetSerializer(leave, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        if leave.approveLeave == True:
+            response_data = {
+                "Success": "Leave has been granted...",
+                "updated_data": serializer.data
+            }
+            return Response(response_data, status=status.HTTP_200_OK)
+        else:
+            return Response({"Success": "Leave has been rejected!!!", "updated_data":serializer.data}, status=status.HTTP_200_OK)
 
 class LeaveListView(ListAPIView):
     serializer_class = ListRequestSerializer
@@ -202,3 +218,20 @@ class LeaveListView(ListAPIView):
     pagination_class = PageNumberPagination
     # permission_classes = [CanViewLeaveRequestPermission]  
 
+class CreateSalaryView(APIView):
+    permission_classes = [CanCreateSalary]
+
+    def post(self, request):
+        serializer = CrateSalarySerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"Success": "salary is created.", "updated_data":serializer.data}, status=status.HTTP_200_OK)
+    
+class SalaryPaymentView(APIView):
+    permission_classes = [CanCreateSalary]
+
+    def post(self, request):
+        serializer = SalaryPaymentSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

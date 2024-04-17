@@ -33,3 +33,8 @@ class CanViewLeaveRequestPermission(permissions.BasePermission):
         print("userType: ",user_type)
         return user_type in ['Admin', 'Project_Manager', 'Team_Leader']
     
+class CanCreateSalary(permissions.BasePermission):
+    def has_permission(self, request, view):
+        user_type = getattr(request.user, 'userType', None)
+        print("userType: ",user_type)
+        return user_type == 'Admin'

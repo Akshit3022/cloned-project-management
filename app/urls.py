@@ -1,7 +1,5 @@
 from django.urls import path, include
 from app.views import *
-# from rest_framework import routers
-
 
 urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
@@ -19,4 +17,7 @@ urlpatterns = [
     path('task-status/<int:id>/', TaskStatusView.as_view(), name='task-status'),
     path('request-leave/', ManageLeaveView.as_view(), name='request-leave'),
     path('leave-list/', LeaveListView.as_view(), name='leave-list'),
+    path('approve-leave/<int:id>/', ApproveLeaveView.as_view(), name='approve-leave'),
+    path('create-salary/', CreateSalaryView.as_view(), name='create-salary'),
+    path('pay-salary/', SalaryPaymentView.as_view(), name='pay-salary'),
 ]   
