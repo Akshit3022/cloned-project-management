@@ -1,5 +1,6 @@
-from django.urls import path, include
+from django.urls import path
 from app.views import *
+from app import views
 
 urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
@@ -20,4 +21,6 @@ urlpatterns = [
     path('approve-leave/<int:id>/', ApproveLeaveView.as_view(), name='approve-leave'),
     path('create-salary/', CreateSalaryView.as_view(), name='create-salary'),
     path('pay-salary/', SalaryPaymentView.as_view(), name='pay-salary'),
+    path('check-payment/', views.CheckPaymentView.as_view(), name='check-payment'),
+    path('success-message/',views.message , name='success-message'),
 ]   

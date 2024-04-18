@@ -15,7 +15,53 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.exceptions import PermissionDenied
 from app.filters import *
 from rest_framework.pagination import PageNumberPagination
+from django.conf import settings
+from django.http import JsonResponse
+import stripe
+from django.views.generic.base import TemplateView
 
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+# def create_payment_intent(request):
+#     amount = 1000  
+    
+#     payment_intent = stripe.PaymentIntent.create(
+#         amount=amount,
+#         currency='inr'
+#     )
+    
+#     return JsonResponse({
+#         'client_secret': payment_intent.client_secret
+#     })
+
+
+class CheckPaymentView(TemplateView):
+    # permission_classes = [IsAuthenticated]
+    template_name = 'payment.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['key'] = settings.STRIPE_PUBLIC_KEY
+        print("context_data", context)
+        return context
+
+def message(request):
+    if request.method == 'POST':
+        payment_method = stripe.PaymentMethod.create(
+            type="card",
+            card={"token": request.POST['stripeToken']}
+        )
+
+        payment_intent = stripe.PaymentIntent.create(
+            amount=25000,
+            currency='inr',
+            description='stripe payment intent',
+            payment_method=payment_method.id,
+            confirm=True,
+            return_url='http://127.0.0.1:8000/api/success-message/'
+    ) 
+    return render(request, 'message.html')
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -30,9 +76,8 @@ class RegisterView(APIView):
     def post(self, request, format=None):
         serializer = RegiterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        token = get_tokens_for_user(user)
-        return Response({'token':token, 'Successful': 'Registration Successful..!'}, status=status.HTTP_201_CREATED)
+        serializer.save()
+        return Response({'Successful': 'Registration Successful..!'}, status=status.HTTP_201_CREATED)
 
 
 class LoginView(APIView):
@@ -223,7 +268,7 @@ class CreateSalaryView(APIView):
 
     def post(self, request):
         serializer = CrateSalarySerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        serializer.is_valid(raise_exception=True)   
         serializer.save()
         return Response({"Success": "salary is created.", "updated_data":serializer.data}, status=status.HTTP_200_OK)
     

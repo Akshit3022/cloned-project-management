@@ -209,14 +209,14 @@ class ListRequestSerializer(serializers.ModelSerializer):
         return obj.empName.name 
     
 class CrateSalarySerializer(serializers.ModelSerializer):
-    user = serializers.SerializerMethodField()
     class Meta:
         model = Salary
         # fields = '__all__'
         exclude = ('date', )
         
-    def get_user(self, obj):
-        return obj.user.name 
+    # def get_user(self, obj):
+    #     print("Got user",obj.user)
+    #     return obj.user.name 
 
 class SalaryPaymentSerializer(serializers.ModelSerializer):
 

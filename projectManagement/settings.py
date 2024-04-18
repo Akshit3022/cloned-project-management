@@ -61,7 +61,7 @@ ROOT_URLCONF = 'projectManagement.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -222,3 +222,9 @@ LOGGING = {
         },
     },
 }
+
+
+# payment gateway integration
+
+STRIPE_PUBLIC_KEY = os.environ.get('PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('SECRET_KEY')

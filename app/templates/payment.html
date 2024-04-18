@@ -1,0 +1,17 @@
+<center>
+    <div>
+        <h1>pay salary 25000</h1>       
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; height: 30%; margin: 0;">
+        <form action="{% url 'success-message' %}" method="post">
+            {% csrf_token %}
+            <script src="https://checkout.stripe.com/checkout.js" 
+            class="stripe-button" 
+            data-key="{{key}}"
+            data-description="Payment Gateway"
+            data-amount="1"
+            data-locate="auto">
+        </script>
+        </form>
+    </div>
+</center>
