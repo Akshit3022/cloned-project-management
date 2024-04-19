@@ -17,7 +17,7 @@ from app.filters import *
 from rest_framework.pagination import PageNumberPagination
 from django.conf import settings
 from django.http import JsonResponse
-import stripe
+# import stripe
 from django.views.generic.base import TemplateView
 from rest_framework.parsers import JSONParser   
 
@@ -301,16 +301,25 @@ class LeaveListView(ListAPIView):
 #         return Response({'payment_intent_id': payment_intent.id}, status=status.HTTP_200_OK)
     
 
+from django.db.models import F
 
 class PaySalaryView(APIView):
     permission_classes = [CanCreateSalary]
 
     def post(self, request):
-        serializer = PaySalarySerializer(data=request.data)
+        user = request.user
+        leave_days = CustomUser.objects.filter(approveLeave=True).aggregate(total_leave_days=models.Sum('leave_days'))['total_leave_days'] or 0
+        total_salary_percentage = 100 - (leave_days / 21 * 100)  
+
+        actual_salary_percentage = min(user.default_salary_percentage, total_salary_percentage)
+        salary_amount = (actual_salary_percentage / 100) * user.base_salary 
+
+        serializer = PaySalarySerializer(data={'user': user.id, 'amount': salary_amount, 'payment_method': request.data.get('payment_method')})
         serializer.is_valid(raise_exception=True)
         serializer.save()
+
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
+
 
     
 #---------------------------- Salary Management ---------------------------- end

@@ -56,6 +56,7 @@ class CustomUser(AbstractBaseUser):
     ]
     userType = models.CharField(max_length=100, choices=typeChoices) 
     allocation_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    default_salary_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=100)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)   
 
@@ -121,6 +122,7 @@ class ManageLeave(models.Model):
     leaveReason = models.CharField(max_length=500)
     notifyTo = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='leaves_notified')
     approveLeave = models.BooleanField(default=False, null=True)
+    leave_days = models.IntegerField(default=0)
 
     
 class SalaryPayment(models.Model):
