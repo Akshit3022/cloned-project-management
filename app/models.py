@@ -122,19 +122,11 @@ class ManageLeave(models.Model):
     notifyTo = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='leaves_notified')
     approveLeave = models.BooleanField(default=False, null=True)
 
-# This model will store information about the salaries provided to employees, project managers, and team leaders by the admin.
-
-class Salary(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    date = models.DateField(default=now)
-
-# This model will track the actual payment transactions made to users.
-
+    
 class SalaryPayment(models.Model):
     transaction_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     payment_date = models.DateField(default=now)
-    payment_method = models.CharField(max_length=100)
-    payment_status = models.BooleanField(default=False)
+    payment_method = models.CharField(max_length=100)   
+

@@ -19,49 +19,11 @@ from django.conf import settings
 from django.http import JsonResponse
 import stripe
 from django.views.generic.base import TemplateView
+from rest_framework.parsers import JSONParser   
 
 
-stripe.api_key = settings.STRIPE_SECRET_KEY
+#---------------------------- Regestraion/Login ---------------------------- start
 
-# def create_payment_intent(request):
-#     amount = 1000  
-    
-#     payment_intent = stripe.PaymentIntent.create(
-#         amount=amount,
-#         currency='inr'
-#     )
-    
-#     return JsonResponse({
-#         'client_secret': payment_intent.client_secret
-#     })
-
-
-class CheckPaymentView(TemplateView):
-    # permission_classes = [IsAuthenticated]
-    template_name = 'payment.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['key'] = settings.STRIPE_PUBLIC_KEY
-        print("context_data", context)
-        return context
-
-def message(request):
-    if request.method == 'POST':
-        payment_method = stripe.PaymentMethod.create(
-            type="card",
-            card={"token": request.POST['stripeToken']}
-        )
-
-        payment_intent = stripe.PaymentIntent.create(
-            amount=25000,
-            currency='inr',
-            description='stripe payment intent',
-            payment_method=payment_method.id,
-            confirm=True,
-            return_url='http://127.0.0.1:8000/api/success-message/'
-    ) 
-    return render(request, 'message.html')
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -71,14 +33,12 @@ def get_tokens_for_user(user):
         'access': str(refresh.access_token),
     }
 
-
 class RegisterView(APIView):
     def post(self, request, format=None):
         serializer = RegiterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({'Successful': 'Registration Successful..!'}, status=status.HTTP_201_CREATED)
-
 
 class LoginView(APIView):
     def post(self, request, format=None):
@@ -92,13 +52,18 @@ class LoginView(APIView):
             return Response({'token':token, "Successful":"Login Successful..!"}, status=status.HTTP_200_OK)
         else:
             return Response({"error":"Invalid Credentials..!"}, status=status.HTTP_401_UNAUTHORIZED)    
-            
         
 class CustomUserProfileView(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request,format=None):
         serializer = CustomUserProfileSerializer(request.user)
         return Response(serializer.data, status=status.HTTP_200_OK) 
+
+
+#---------------------------- Regestraion/Login ---------------------------- end
+
+
+#---------------------------- Password Management ---------------------------- start
 
 
 class ChangePasswordView(APIView):  
@@ -109,20 +74,17 @@ class ChangePasswordView(APIView):
         serializer.is_valid(raise_exception=True)
         return Response({"Successful":"Change Password Successful..!"}, status=status.HTTP_200_OK)
     
-    
 class SendResetPasswordEmaiView(APIView):
     def post(self, request):
         serializer = SendResetPasswordEmailSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         return Response({"Successful":"password reset link is sent..!"}, status=status.HTTP_200_OK)
 
-
 class CustomUserResetPasswordView(APIView):
     def post(self, request, user_id, token, format=None):
         serializer = CustomUserResetPasswordSerializer(data=request.data, context={'user_id': user_id, 'token':token})
         serializer.is_valid(raise_exception=True)
         return Response({"Successful":"password reset successful..!"}, status=status.HTTP_200_OK)
-
 
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]  
@@ -139,6 +101,11 @@ class LogoutView(APIView):
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
 
+#---------------------------- Password Management ---------------------------- end
+        
+
+#---------------------------- Project Management ---------------------------- start
+
 
 class ProjectListView(ListAPIView):
     serializer_class = ProjectListSerializer
@@ -154,7 +121,6 @@ class ProjectListView(ListAPIView):
         else:
             raise PermissionDenied("You do not have permission to view projects.")
 
-
 class projectCreateView(APIView):
     permission_classes = [CanCreateProjectPermission]
 
@@ -164,7 +130,6 @@ class projectCreateView(APIView):
         serializer.is_valid(raise_exception=True)   
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
 
 class ProjectCRUDView(APIView):
     permission_classes = [CanCreateProjectPermission]
@@ -185,8 +150,14 @@ class ProjectCRUDView(APIView):
             project.delete()
             return Response({"success": "Project deleted successfully."},status=status.HTTP_204_NO_CONTENT)
         except Project.DoesNotExist:
-            return Response({"error": "Project does not exists."},status=status.HTTP_404_NOT_FOUND)
-        
+            return Response({"error": "Project does not exists."},status=status.HTTP_404_NOT_FOUND)      
+
+
+#---------------------------- Password Management ---------------------------- end
+
+
+#---------------------------- Allocation ---------------------------- start
+
 
 class ProjectAllocationView(APIView):
     permission_classes = [CanAllocateProject]
@@ -198,7 +169,6 @@ class ProjectAllocationView(APIView):
         return Response({"Success": "Project allocation successful.", "allocation": serializer.data},
                         status=status.HTTP_201_CREATED)        
         
-                
 class EmployeeAllocationListView(APIView):
     permission_classes = [CanAllocateProject]
 
@@ -207,6 +177,13 @@ class EmployeeAllocationListView(APIView):
         serializer = EmployeeAllocationListSerializer(employees, many=True)
         print(serializer.data)
         return Response(serializer.data)
+    
+
+#---------------------------- Allocation ---------------------------- end
+
+
+#---------------------------- Task Management ---------------------------- start
+    
 
 class TaskStatusView(APIView):
     permission_classes = [CanChangeTaskStatus]
@@ -223,10 +200,15 @@ class TaskStatusView(APIView):
                 "updated_data": serializer.data
             }
             return Response(response_data, status=status.HTTP_200_OK)
-            # return Response({"Success": "Task has been completed successfully by {{user_name}}.", "updated_data":serializer.data}, status=status.HTTP_200_OK)
         else:
-            return Response({"Success": "Task has not completed.", "updated_data":serializer.data}, status=status.HTTP_200_OK)
+            return Response({"Pending": "Task has not completed.", "updated_data":serializer.data}, status=status.HTTP_200_OK)
         
+
+#---------------------------- Task Management ---------------------------- end
+
+
+#---------------------------- Leave Management ---------------------------- start
+
 
 class ManageLeaveView(APIView):
     permission_classes = [CanCraeteLeaveRequest]
@@ -263,20 +245,72 @@ class LeaveListView(ListAPIView):
     pagination_class = PageNumberPagination
     # permission_classes = [CanViewLeaveRequestPermission]  
 
-class CreateSalaryView(APIView):
-    permission_classes = [CanCreateSalary]
+#---------------------------- Leave Management ---------------------------- end
 
-    def post(self, request):
-        serializer = CrateSalarySerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)   
-        serializer.save()
-        return Response({"Success": "salary is created.", "updated_data":serializer.data}, status=status.HTTP_200_OK)
+
+#---------------------------- Salary Management ---------------------------- start
+
+
+# stripe.api_key = settings.STRIPE_SECRET_KEY
+
+# class SendPaymentDetailsView(TemplateView):
+#     template_name = 'payment.html'
+
+#     def message(request):
+#         if request.method == 'POST':
+#             payment_method = stripe.PaymentMethod.create(
+#                 type="card",
+#                 card={"token": request.POST['stripeToken']}
+#             )
+
+#             payment_intent = stripe.PaymentIntent.create(
+#                 amount=25000,
+#                 currency='inr',
+#                 description='stripe payment intent',
+#                 payment_method=payment_method.id,
+#                 confirm=True,
+#                 return_url='http://127.0.0.1:8000/api/payment-details/'
+#         ) 
+
+# class SalaryPaymentView(APIView):
+#     # permission_classes = [CanCreateSalary]
+#     parser_classes = [JSONParser]
+#     print("CNCNCN")
+#     def post(self, request):
+#         data = request.data
+#         print("data", data)
+#         payment_method = data.get('payment_method')
+#         print("payment_method", payment_method)
+
+#         amount_str = data.get('amount', '0')
+#         amount = max(int(amount_str) if amount_str else 0, 50)
+
+#         payment_intent = stripe.PaymentIntent.create(
+#             amount=amount,
+#             currency='inr',
+#             description='Salary payment',
+#             payment_method=payment_method,
+#             confirm=True,
+#             return_url='http://127.0.0.1:8000/api/pay-salary/'
+#         )
+
+#         serializer = SalaryPaymentSerializer(data={'user': request.user.id, 'amount': amount, 'payment_method': payment_method})
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+
+#         return Response({'payment_intent_id': payment_intent.id}, status=status.HTTP_200_OK)
     
-class SalaryPaymentView(APIView):
+
+
+class PaySalaryView(APIView):
     permission_classes = [CanCreateSalary]
 
     def post(self, request):
-        serializer = SalaryPaymentSerializer(data=request.data)
+        serializer = PaySalarySerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+
+    
+#---------------------------- Salary Management ---------------------------- end

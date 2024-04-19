@@ -47,10 +47,6 @@ class ManageLeaveModelAdmin(admin.ModelAdmin):
     list_display = ["empName","leaveType","leaveReason", "notifyTo"]
 admin.site.register(ManageLeave, ManageLeaveModelAdmin)
 
-class SalaryModelAdmin(admin.ModelAdmin):
-    list_display = ["user","amount","date"]
-admin.site.register(Salary, SalaryModelAdmin)
-
 class SalaryPaymentModelAdmin(admin.ModelAdmin):
-    list_display = ["user","amount","payment_date","payment_method","payment_status"]
+    list_display = ["user","amount","payment_date","payment_method"]
 admin.site.register(SalaryPayment, SalaryPaymentModelAdmin)

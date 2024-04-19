@@ -198,7 +198,6 @@ class ApproveLeavetSerializer(serializers.ModelSerializer):
         model = ManageLeave
         fields = ('approveLeave',)
 
-
 class ListRequestSerializer(serializers.ModelSerializer):
     empName = serializers.SerializerMethodField()
     class Meta:
@@ -207,19 +206,15 @@ class ListRequestSerializer(serializers.ModelSerializer):
         
     def get_empName(self, obj):
         return obj.empName.name 
-    
-class CrateSalarySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Salary
-        # fields = '__all__'
-        exclude = ('date', )
-        
-    # def get_user(self, obj):
-    #     print("Got user",obj.user)
-    #     return obj.user.name 
 
 class SalaryPaymentSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = SalaryPayment
+        fields = ['amount', 'payment_method'] 
+
+
+class PaySalarySerializer(serializers.ModelSerializer):
     class Meta:
         model = SalaryPayment
         fields = '__all__'

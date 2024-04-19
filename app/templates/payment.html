@@ -1,17 +1,73 @@
-<center>
-    <div>
-        <h1>pay salary 25000</h1>       
-    </div>
-    <div style="display: flex; justify-content: center; align-items: center; height: 30%; margin: 0;">
-        <form action="{% url 'success-message' %}" method="post">
-            {% csrf_token %}
-            <script src="https://checkout.stripe.com/checkout.js" 
-            class="stripe-button" 
-            data-key="{{key}}"
-            data-description="Payment Gateway"
-            data-amount="1"
-            data-locate="auto">
-        </script>
-        </form>
-    </div>
-</center>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    
+    <form id="payment-form" action="{% url 'pay-salary' %}" method="post" style="display: flex; justify-content: center; align-items: center; height: 100%; margin: 0;">
+        {% csrf_token %}
+        <input type="number" name="amount" placeholder="Amount" min="0" step="0.01">
+        <input type="text" id="card-element" placeholder="Credit or debit card">
+        <button id="card-button" type="submit">Pay</button>
+    </form>
+
+    <div id="card-errors" role="alert"></div>
+
+    <script>
+        var stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+        var elements = stripe.elements();
+        var cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+
+        var form = document.getElementById('payment-form');
+        var cardButton = document.getElementById('card-button');
+        var displayError = document.getElementById('card-errors');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            stripe.createPaymentMethod({
+                type: 'card',
+                card: cardElement,
+            }).then(function(result) {
+                if (result.error) {
+                    displayError.textContent = result.error.message;
+                } else {
+                    var paymentMethod = result.paymentMethod.id;
+                    var amount = document.querySelector('input[name=amount]').value;
+                    var url = form.getAttribute('action');
+
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        },
+                        body: JSON.stringify({
+                            amount: amount,
+                            payment_method: paymentMethod
+                        })
+                    }).then(function(response) {
+                        if (!response.ok) {
+                            throw Error(response.statusText);
+                        }
+                        return response.json();
+                    }).then(function(data) {
+                        console.log(data); // Log the response data for debugging
+                        // Redirect user to payment details page
+                        window.location.href = '/payment-details/';
+                    }).catch(function(error) {
+                        console.error('Error:', error);
+                        // Display error message to the user
+                        displayError.textContent = 'An error occurred during payment.';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
