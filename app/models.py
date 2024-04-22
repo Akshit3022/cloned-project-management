@@ -129,6 +129,6 @@ class SalaryPayment(models.Model):
     transaction_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    payment_date = models.DateField(default=now)
+    payment_date = models.DateField(default=now().date)
     payment_method = models.CharField(max_length=100)   
 

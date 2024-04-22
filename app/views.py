@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from django.shortcuts import render
 from rest_framework.views import APIView
 from app.models import *
@@ -17,9 +18,10 @@ from app.filters import *
 from rest_framework.pagination import PageNumberPagination
 from django.conf import settings
 from django.http import JsonResponse
+
+
 # import stripe
-from django.views.generic.base import TemplateView
-from rest_framework.parsers import JSONParser   
+import requests
 
 
 #---------------------------- Regestraion/Login ---------------------------- start
@@ -213,11 +215,38 @@ class TaskStatusView(APIView):
 class ManageLeaveView(APIView):
     permission_classes = [CanCraeteLeaveRequest]
 
+    # def post(self, request):
+    #     request.data['empName'] = request.user.id
+    #     serializer = ManageRequestSerializer(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+
     def post(self, request):
+        start_date = request.data.get('leaveStartDate')
+        end_date = request.data.get('leaveEndDate')
+        
+        # Convert string dates to datetime objects
+        start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
+        end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
+
+        print("start_date", start_date)
+        print("end_date", end_date)
+        
+        # Calculate total leave days
+        total_leave_days = (end_date - start_date).days + 1
+
+        print("total_leave_days", total_leave_days)
+
+        # Assign total_leave_days to request data
+        request.data['leave_days'] = total_leave_days
         request.data['empName'] = request.user.id
+        
+        # Serialize and save leave request
         serializer = ManageRequestSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        
         return Response(serializer.data, status=status.HTTP_201_CREATED)
         
 class ApproveLeaveView(APIView):
@@ -301,25 +330,96 @@ class LeaveListView(ListAPIView):
 #         return Response({'payment_intent_id': payment_intent.id}, status=status.HTTP_200_OK)
     
 
-from django.db.models import F
+from django.db.models import Sum
 
 class PaySalaryView(APIView):
     permission_classes = [CanCreateSalary]
 
     def post(self, request):
-        user = request.user
-        leave_days = CustomUser.objects.filter(approveLeave=True).aggregate(total_leave_days=models.Sum('leave_days'))['total_leave_days'] or 0
-        total_salary_percentage = 100 - (leave_days / 21 * 100)  
+        user_id = request.data.get('user')
+        print("user",user_id)
+        provided_salary_amount = float(request.data.get('amount'))
+        emp = ManageLeave.objects.filter(empName=user_id)
+        print("emp",emp)
+        
+        # Get the total approved leave days for the user
+        # total_leave_days = user.leaves_requested.filter(approveLeave=True).aggregate(total_leave_days=models.Sum('leaveDays'))['total_leave_days'] or 0
+        total_leave_days = ManageLeave.objects.filter(empName=user_id, approveLeave=True).aggregate(total_leave_days=Sum('leave_days'))['total_leave_days']
+        print("total_leave_days", total_leave_days)  
+        # Calculate the remaining working days after deducting leave days
+        remaining_working_days = 21 - total_leave_days
+        
+        # Calculate the total salary percentage based on remaining working days
+        total_salary_percentage = (remaining_working_days / 21) * 100
 
-        actual_salary_percentage = min(user.default_salary_percentage, total_salary_percentage)
-        salary_amount = (actual_salary_percentage / 100) * user.base_salary 
-
-        serializer = PaySalarySerializer(data={'user': user.id, 'amount': salary_amount, 'payment_method': request.data.get('payment_method')})
+        # Get the user's default salary percentage
+        default_salary_percentage = 100
+        
+        # Determine the actual salary percentage to be used
+        actual_salary_percentage = min(default_salary_percentage, total_salary_percentage)
+        
+        # Calculate the salary amount based on the actual salary percentage
+        salary_amount = (actual_salary_percentage / 100) * provided_salary_amount
+        amount = int(salary_amount)
+        # Save the salary payment information
+        serializer = PaySalarySerializer(data={'user': user_id, 'amount': amount, 'payment_method': request.data.get('payment_method')})
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
+    # def post(self, request):
+    #     user = request.data.get('user')
+    #     leave_days = CustomUser.objects.filter(approveLeave=True).aggregate(total_leave_days=models.Sum('leave_days'))['total_leave_days'] or 0
+    #     total_salary_percentage = 100 - (leave_days / 21 * 100)  
+
+    #     actual_salary_percentage = min(user.default_salary_percentage, total_salary_percentage)
+    #     salary_amount = (actual_salary_percentage / 100) * user.base_salary 
+
+    #     serializer = PaySalarySerializer(data={'user': user.id, 'amount': salary_amount, 'payment_method': request.data.get('payment_method')})
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+
+    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+    # def post(self, request):
+    #     user = request.user
+    #     leave_days = CustomUser.objects.filter(approveLeave=True).aggregate(total_leave_days=models.Sum('leave_days'))['total_leave_days'] or 0
+    #     total_salary_percentage = 100 - (leave_days / 21 * 100)  
+
+    #     actual_salary_percentage = min(user.default_salary_percentage, total_salary_percentage)
+    #     salary_amount = (actual_salary_percentage / 100) * user.base_salary 
+
+    #     # Create an order in PayPal
+    #     paypal_url = 'https://api-m.sandbox.paypal.com/v2/checkout/orders'
+    #     headers = {
+    #         'Content-Type': 'application/json',
+    #         'Authorization': 'Bearer YOUR_PAYPAL_ACCESS_TOKEN'
+    #     }
+    #     data = {
+    #         'intent': 'CAPTURE',
+    #         'purchase_units': [{
+    #             'amount': {
+    #                 'currency_code': 'USD',
+    #                 'value': str(salary_amount)
+    #             }
+    #         }]
+    #     }
+
+    #     response = requests.post(paypal_url, json=data, headers=headers)
+    #     if response.status_code != 201:
+    #         return Response({"message": "Failed to create PayPal order"}, status=status.HTTP_400_BAD_REQUEST)
+
+    #     # Extract PayPal order ID from the response
+    #     paypal_order_id = response.json()['id']
+
+    #     # Save the PayPal order ID along with other payment details
+    #     serializer = PaySalarySerializer(data={'user': user.id, 'amount': salary_amount, 'payment_method': 'PayPal', 'paypal_order_id': paypal_order_id})
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+
+    #     # Return the PayPal order ID in the response
+    #     return Response({"paypal_order_id": paypal_order_id}, status=status.HTTP_201_CREATED)
 
     
 #---------------------------- Salary Management ---------------------------- end
